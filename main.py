@@ -18,7 +18,7 @@ def create_new_csv():
 known_face_encodings = []
 known_face_names = []
 
-# Assume reference images are stored in a directory called "reference_images"
+# image directory
 reference_dir = "C:/p/attendence/image/"
 
 for filename in os.listdir(reference_dir):
@@ -38,7 +38,6 @@ for filename in os.listdir(reference_dir):
 
 print(f"Loaded {len(known_face_names)} reference images")
 
-# Initialize video capture
 video_capture = cv2.VideoCapture(0)
 
 # Create a new CSV file for this run
