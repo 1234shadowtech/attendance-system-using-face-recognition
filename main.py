@@ -11,7 +11,7 @@ def create_new_csv():
     csv_filename = f'attendance_{timestamp}.csv'
     with open(csv_filename, mode='w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(["Name", "Date", "Time"])
+        writer.writerow(["Name", "usn","Date", "Time"])
     return csv_filename
 
 # Load and encode multiple reference images
@@ -62,7 +62,8 @@ while True:
     face_locations = face_recognition.face_locations(rgb_small_frame)
     print(f"Faces detected in frame: {len(face_locations)}")
 
-    recognized_names = []  # To keep track of names recognized in this frame
+    recognized_names = [] 
+    # To keep track of names recognized in this frame
 
     if len(face_locations) > 0:
         face_encodings = face_recognition.face_encodings(rgb_small_frame, face_locations)
@@ -86,11 +87,12 @@ while True:
                         now = datetime.now()
                         current_date = now.strftime("%Y-%m-%d")
                         current_time = now.strftime("%H:%M:%S")
-                        
+                        dic ={"tharun":"1AY21IS409","varun":"1AY21IS122","sharanu":"1AY21IS097",}
+                        usn=dic[name]
                         # Write to CSV file
                         with open(csv_filename, mode='a', newline='') as file:
                             writer = csv.writer(file)
-                            writer.writerow([name, current_date, current_time])
+                            writer.writerow([name,usn, current_date, current_time])
                         
                         attendance_marked.add(name)
                         print(f"Attendance marked for {name} at {current_time}")
